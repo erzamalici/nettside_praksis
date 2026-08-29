@@ -1,0 +1,316 @@
+/* ==========================================================================
+   Praksisnettside — felles stilark
+   Rolig, faglig uttrykk: skarpe hjørner, hårfine linjer i stedet for
+   skygger, og monospace til metadata (datoer/labels).
+   ========================================================================== */
+
+:root{
+  --steel:      #21785A;   /* primæraksent */
+  --steel-dark: #144A38;   /* hover/kant */
+  --steel-tint: #E6F1EA;   /* lys flate */
+  --ink:        #1B1B18;   /* tekst */
+  --ink-soft:   #58564E;   /* sekundærtekst */
+  --line:       #DEDDD5;   /* kantlinjer */
+  --line-soft:  #EDECE5;
+  --paper:      #FDFDFB;
+  --header-h:   64px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "IBM Plex Sans", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: var(--steel); }
+
+a:focus-visible, button:focus-visible{
+  outline: 2px solid var(--steel);
+  outline-offset: 2px;
+}
+
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  z-index: 100;
+  padding: 12px 16px;
+  background: var(--steel);
+  color: #fff;
+  text-decoration: none;
+}
+.skip-link:focus{ left: 8px; top: 8px; }
+
+/* ---------- Toppmeny ---------- */
+
+.masthead{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: var(--header-h);
+  padding-left: 24px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.masthead__brand{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+}
+
+.masthead__mark{
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  letter-spacing: 0.1em;
+  color: var(--steel-dark);
+}
+
+.masthead__divider{
+  width: 1px;
+  height: 24px;
+  background: var(--line);
+}
+
+.masthead__title{ font-weight: 500; font-size: 0.9375rem; }
+
+.mainnav{
+  margin-left: auto;
+  display: flex;
+  align-self: stretch;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.mainnav::-webkit-scrollbar{ display: none; }
+
+.mainnav a{
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+}
+.mainnav a:hover{ color: var(--ink); background: var(--line-soft); }
+.mainnav a[aria-current="page"]{
+  color: var(--steel);
+  font-weight: 600;
+  border-bottom-color: var(--steel);
+}
+
+/* ---------- Innhold ---------- */
+
+.content{
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px 48px 96px;
+}
+
+.content p{ max-width: 68ch; }
+
+.page-title{
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(2.25rem, 6.5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.rule{
+  width: 48px;
+  height: 3px;
+  margin-top: 22px;
+  background: var(--steel);
+}
+
+.lede{
+  margin: 22px 0 0;
+  font-size: 1.0625rem;
+  color: var(--ink-soft);
+}
+
+.section-title{
+  margin: 56px 0 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.section-title + p{ margin-top: 16px; }
+.section-title + .meta{ margin-top: 8px; }
+.meta + p, .meta + .checklist{ margin-top: 16px; }
+
+.meta{
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+}
+
+.checklist{ margin: 16px 0 0; padding-left: 20px; color: var(--ink-soft); }
+.checklist li{ margin-bottom: 6px; }
+
+/* ---------- Kortrutenett (forside) ---------- */
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  min-height: 176px;
+  padding: 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 120ms linear, background 120ms linear;
+}
+.card:hover{ background: var(--line-soft); border-color: var(--steel); }
+
+.card__icon{
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--steel-tint);
+  color: var(--steel);
+}
+
+.card__title{ margin: 22px 0 0; font-size: 1.0625rem; font-weight: 600; }
+.card__rule{ width: 24px; height: 2px; margin: 14px 0; background: var(--line); }
+.card__meta{ margin: auto 0 0; font-size: 0.875rem; color: var(--ink-soft); }
+
+/* ---------- Lenkeliste (f.eks. kontaktinfo) ---------- */
+
+.linklist{
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.linklist li{ display: flex; align-items: center; gap: 12px; font-size: 0.9375rem; }
+.linklist svg{ flex: none; color: var(--steel); }
+
+/* ---------- Profil: portrett + nøkkelinfo ---------- */
+
+.profile{
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+  margin-top: 32px;
+}
+
+.profile__photo{
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  display: block;
+  background: var(--steel-tint);
+}
+
+.profile p:first-child{ margin-top: 0; }
+
+.infolist{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.infolist .label{
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 4px;
+}
+
+.infolist .value{
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+@media (max-width: 700px){
+  .profile{ grid-template-columns: 1fr; gap: 20px; }
+  .profile__photo{ max-width: 220px; }
+}
+
+/* ---------- Signaturfelt ---------- */
+
+.signoff{
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.sig-block{ flex: 1; min-width: 200px; }
+.sig-line{ border-bottom: 1px solid var(--ink); height: 34px; }
+.sig-caption{
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
+
+/* ---------- Bunntekst ---------- */
+
+.footer{
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 48px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Mobil ---------- */
+
+@media (max-width: 900px){
+  .masthead{ flex-wrap: wrap; padding: 12px 16px 0; gap: 12px; }
+  .mainnav{ margin-left: 0; width: 100%; order: 2; border-top: 1px solid var(--line); }
+  .mainnav a{ padding: 12px; }
+  .content{ padding: 40px 24px 72px; }
+  .footer{ padding: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  * { transition: none !important; animation: none !important; }
+}
