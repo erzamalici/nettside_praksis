@@ -1,18 +1,22 @@
 /* ==========================================================================
    Praksisnettside — felles stilark
-   Rolig, faglig uttrykk: skarpe hjørner, hårfine linjer i stedet for
-   skygger, og monospace til metadata (datoer/labels).
+   Rolig, faglig uttrykk: skarpe hjørner, hårfine linjer og dype,
+   dempede grønntoner for et mer profesjonelt, korporat preg.
    ========================================================================== */
 
 :root{
-  --steel:      #21785A;   /* primæraksent */
-  --steel-dark: #144A38;   /* hover/kant */
-  --steel-tint: #E6F1EA;   /* lys flate */
-  --ink:        #1B1B18;   /* tekst */
-  --ink-soft:   #58564E;   /* sekundærtekst */
-  --line:       #DEDDD5;   /* kantlinjer */
-  --line-soft:  #EDECE5;
-  --paper:      #FDFDFB;
+  --steel:      #0E5A3F;   /* primæraksent — dyp skoggrønn */
+  --steel-dark: #06301F;   /* hover/kant — nesten sortgrønn */
+  --steel-deep: #08402C;   /* mørkeste flate (toppmeny/bunntekst) */
+  --steel-tint: #E4EFE8;   /* lys flate */
+  --gold:       #B99655;   /* diskré aksent til detaljer */
+  --ink:        #16201B;   /* tekst */
+  --ink-soft:   #55625B;   /* sekundærtekst */
+  --line:       #DAE2DC;   /* kantlinjer */
+  --line-soft:  #EEF3EF;
+  --paper:      #FCFDFB;
+  --shadow:     0 1px 2px rgba(6, 48, 31, 0.06), 0 8px 24px -12px rgba(6, 48, 31, 0.18);
+  --shadow-lg:  0 4px 10px rgba(6, 48, 31, 0.08), 0 20px 40px -18px rgba(6, 48, 31, 0.28);
   --header-h:   64px;
 }
 
@@ -61,7 +65,8 @@ a:focus-visible, button:focus-visible{
   min-height: var(--header-h);
   padding-left: 24px;
   background: var(--paper);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 3px solid var(--steel);
+  box-shadow: var(--shadow);
 }
 
 .masthead__brand{
@@ -103,15 +108,17 @@ a:focus-visible, button:focus-visible{
   align-items: center;
   padding: 0 16px;
   font-size: 0.875rem;
+  font-weight: 500;
   color: var(--ink-soft);
   text-decoration: none;
   white-space: nowrap;
   border-bottom: 3px solid transparent;
+  transition: color 120ms linear, background 120ms linear, border-color 120ms linear;
 }
-.mainnav a:hover{ color: var(--ink); background: var(--line-soft); }
+.mainnav a:hover{ color: var(--steel-dark); background: var(--steel-tint); }
 .mainnav a[aria-current="page"]{
-  color: var(--steel);
-  font-weight: 600;
+  color: var(--steel-dark);
+  font-weight: 700;
   border-bottom-color: var(--steel);
 }
 
@@ -136,10 +143,10 @@ a:focus-visible, button:focus-visible{
 }
 
 .rule{
-  width: 48px;
-  height: 3px;
+  width: 56px;
+  height: 4px;
   margin-top: 22px;
-  background: var(--steel);
+  background: linear-gradient(90deg, var(--steel-dark), var(--steel) 70%, var(--gold));
 }
 
 .lede{
@@ -184,19 +191,26 @@ a:focus-visible, button:focus-visible{
   padding: 24px;
   background: var(--paper);
   border: 1px solid var(--line);
+  border-top: 3px solid transparent;
   color: inherit;
   text-decoration: none;
-  transition: border-color 120ms linear, background 120ms linear;
+  box-shadow: var(--shadow);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
-.card:hover{ background: var(--line-soft); border-color: var(--steel); }
+.card:hover{
+  border-color: var(--steel);
+  border-top-color: var(--steel);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
 
 .card__icon{
   display: grid;
   place-items: center;
   width: 44px;
   height: 44px;
-  background: var(--steel-tint);
-  color: var(--steel);
+  background: var(--steel-deep);
+  color: #EAF3ED;
 }
 
 .card__title{ margin: 22px 0 0; font-size: 1.0625rem; font-weight: 600; }
@@ -232,6 +246,7 @@ a:focus-visible, button:focus-visible{
   border: 1px solid var(--line);
   display: block;
   background: var(--steel-tint);
+  box-shadow: var(--shadow);
 }
 
 .profile p:first-child{ margin-top: 0; }
@@ -296,9 +311,10 @@ a:focus-visible, button:focus-visible{
   justify-content: space-between;
   gap: 16px;
   padding: 24px 48px;
-  border-top: 1px solid var(--line);
+  background: var(--steel-deep);
+  border-top: 3px solid var(--gold);
   font-size: 0.8125rem;
-  color: var(--ink-soft);
+  color: #DDE9E1;
 }
 
 /* ---------- Mobil ---------- */
