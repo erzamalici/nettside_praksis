@@ -1,18 +1,14 @@
-/* ==========================================================================
-   Praksisnettside — felles stilark
-   Rolig, faglig uttrykk: skarpe hjørner, hårfine linjer og dype,
-   dempede grønntoner for et mer profesjonelt, korporat preg.
-   ========================================================================== */
+
 
 :root{
-  --steel:      #0E5A3F;   /* primæraksent — dyp skoggrønn */
-  --steel-dark: #06301F;   /* hover/kant — nesten sortgrønn */
-  --steel-deep: #08402C;   /* mørkeste flate (toppmeny/bunntekst) */
-  --steel-tint: #E4EFE8;   /* lys flate */
-  --gold:       #B99655;   /* diskré aksent til detaljer */
-  --ink:        #16201B;   /* tekst */
-  --ink-soft:   #55625B;   /* sekundærtekst */
-  --line:       #DAE2DC;   /* kantlinjer */
+  --steel:      #0E5A3F;   
+  --steel-dark: #06301F;  
+  --steel-deep: #08402C;   
+  --steel-tint: #E4EFE8;   
+  --gold:       #B99655;   
+  --ink:        #16201B;   
+  --ink-soft:   #55625B;   
+  --line:       #DAE2DC;  
   --line-soft:  #EEF3EF;
   --paper:      #FCFDFB;
   --shadow:     0 1px 2px rgba(6, 48, 31, 0.06), 0 8px 24px -12px rgba(6, 48, 31, 0.18);
@@ -53,7 +49,7 @@ a:focus-visible, button:focus-visible{
 }
 .skip-link:focus{ left: 8px; top: 8px; }
 
-/* ---------- Toppmeny ---------- */
+/*toppmeny*/
 
 .masthead{
   position: sticky;
@@ -122,7 +118,7 @@ a:focus-visible, button:focus-visible{
   border-bottom-color: var(--steel);
 }
 
-/* ---------- Innhold ---------- */
+/*Innhold*/
 
 .content{
   flex: 1 0 auto;
@@ -175,7 +171,7 @@ a:focus-visible, button:focus-visible{
 .checklist{ margin: 16px 0 0; padding-left: 20px; color: var(--ink-soft); }
 .checklist li{ margin-bottom: 6px; }
 
-/* ---------- Kortrutenett (forside) ---------- */
+
 
 .cards{
   display: grid;
@@ -217,7 +213,7 @@ a:focus-visible, button:focus-visible{
 .card__rule{ width: 24px; height: 2px; margin: 14px 0; background: var(--line); }
 .card__meta{ margin: auto 0 0; font-size: 0.875rem; color: var(--ink-soft); }
 
-/* ---------- Lenkeliste (f.eks. kontaktinfo) ---------- */
+
 
 .linklist{
   list-style: none;
@@ -229,7 +225,7 @@ a:focus-visible, button:focus-visible{
 .linklist li{ display: flex; align-items: center; gap: 12px; font-size: 0.9375rem; }
 .linklist svg{ flex: none; color: var(--steel); }
 
-/* ---------- Profil: portrett + nøkkelinfo ---------- */
+
 
 .profile{
   display: grid;
@@ -280,7 +276,7 @@ a:focus-visible, button:focus-visible{
   .profile__photo{ max-width: 220px; }
 }
 
-/* ---------- Signaturfelt ---------- */
+
 
 .signoff{
   margin-top: 64px;
@@ -302,7 +298,6 @@ a:focus-visible, button:focus-visible{
   margin-top: 8px;
 }
 
-/* ---------- Bunntekst ---------- */
 
 .footer{
   flex: none;
@@ -317,7 +312,7 @@ a:focus-visible, button:focus-visible{
   color: #DDE9E1;
 }
 
-/* ---------- Mobil ---------- */
+
 
 @media (max-width: 900px){
   .masthead{ flex-wrap: wrap; padding: 12px 16px 0; gap: 12px; }
